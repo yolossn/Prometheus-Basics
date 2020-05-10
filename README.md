@@ -11,7 +11,7 @@ A beginner friendly introduction to prometheus.
 
 Prometheus is a system monitoring and alerting system. It was opensourced by SoundCloud in 2012 and was incubated by Cloud Native Computing Foundation. Prometheus stores all the data as time series, i.e metrics information is stored along with the timestamp at which it was recorded, optional key-value pairs called as labels can also be stored along with metrics. 
 
-# What are metrics and why is it important for your applications?
+# What is metrics and why should I worry about it ?
 
 Metrics in layman terms is a standard for measurement. What we want to measure depends from application to application. For a web server it can be request times, for a database it can be CPU usage or number of active connections etc. 
 
@@ -73,7 +73,7 @@ Prometheus exposes its own metrics which can be consumed by itself or another pr
 
 Now that we have Prometheus, the next step is to run it. All that we need is just the binary and a configuration file. Prometheus uses yaml files for configuration.
 
-*config.yml*
+*prometheus.yml*
 ```
 global:
  scrape_interval: 15s
@@ -88,4 +88,35 @@ In the above configuration file we have mentioned the scrape_interval i.e how fr
 
 <p align="center">
   <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus1.gif">
+</p>
+
+Now we have Prometheus up and running and scraping its own metics every 15s. Prometheus has standard exporters available to export metrics. Next we will run a node exporter which is an exporter for machine metrics and scrape the same using prometheus.
+Download node metrics exporter from [here](https://prometheus.io/download/#node_exporter)
+
+There are many standard exporters available like node exporter you can find them [here](https://github.com/roaldnefs/awesome-prometheus#exporters)
+
+**Run the node exporter in a terminal.**
+> ./node_exporter
+
+<p align="center">
+  <img width="1600" height="276" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/node_exporter.png">
+</p>
+
+Next Add node exporter to the list of scrape_configs
+
+*node_exporter.yml*
+```
+global:
+ scrape_interval: 15s
+ 
+scrape_configs:
+ - job_name: prometheus
+   static_configs:
+       - targets: ["localhost:9090"]
+ - job_name: node_exporter
+   static_configs:
+       - targets: ["localhost:9100"]
+```
+<p align="center">
+  <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus2.gif">
 </p>
