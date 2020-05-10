@@ -1,6 +1,6 @@
 <p align="center">
-# Prometheus-Basics
-A beginner friendly introduction to prometheus.
+<h1>Prometheus-Basics</h1>
+<p>A beginner friendly introduction to prometheus.</p>
 
   <img width="480" height="480" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
 </p>
