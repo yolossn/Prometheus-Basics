@@ -1,17 +1,28 @@
+<p align="center">
 # Prometheus-Basics
 A beginner friendly introduction to prometheus.
+
+  <img width="751" height="281" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
+</p>
 
 
 
 
 ## Table of Contents
+1. [What is prometheus ?](https://github.com/yolossn/Prometheus-Basics#what-is-prometheus-)
+2. [What are metrics and why is it important ?](https://github.com/yolossn/Prometheus-Basics#what-is-metrics-and-why-should-i-worry-about-it-)
+3. [Basic Architecture of Prometheus](https://github.com/yolossn/Prometheus-Basics#basic-architecture-of-prometheus)
+4. [Show me how it is done](https://github.com/yolossn/Prometheus-Basics#show-me-how-it-is-done)
+5. [Type of metrics](https://github.com/yolossn/Prometheus-Basics#type-of-metrics)
+6. [Create a simple exporter](https://github.com/yolossn/Prometheus-Basics#create-a-simple-exporter)
+7. [References](https://github.com/yolossn/Prometheus-Basics#References)
 
 
 # What is prometheus ?
 
 Prometheus is a system monitoring and alerting system. It was opensourced by SoundCloud in 2012 and was incubated by Cloud Native Computing Foundation. Prometheus stores all the data as time series, i.e metrics information is stored along with the timestamp at which it was recorded, optional key-value pairs called as labels can also be stored along with metrics. 
 
-# What is metrics and why should I worry about it ?
+# What are metrics and why is it important?
 
 Metrics in layman terms is a standard for measurement. What we want to measure depends from application to application. For a web server it can be request times, for a database it can be CPU usage or number of active connections etc. 
 
@@ -224,7 +235,7 @@ The graph shows that the 90th percentile is 0.09, To find the histogram_quantile
 </p>
 
 
-# Summary
+## Summary
 
 Summary is similar to histogram and calculates quantiles which can be configured, but it is calculated on the application level hence aggregation of metrics from multiple instances of the same process is not possible. It is used when the buckets of a metric is not known beforehand and is highly recommended to use histogram over summary whenever possible. Calculating summary on the application level is also quite expensive and it is not recommended to be used. 
 
@@ -375,6 +386,7 @@ Note:
 - `promhttp.Handler` gzips the response, If you are using a gzip middleware then you must implement some skipper logic to avoid compressing the response twice.
 
 I hope I did justice and helped you understand the basics of prometheus.
+
 **Where to go from here:**
 - It is important to understand PromQL extensively to take advantage of the metrics which one has collected. Remember the goal is not just to collect metrics but to derive answers for application related questions.  This
 https://medium.com/@valyala/promql-tutorial-for-beginners-9ab455142085 is a very good resource to get started with PromQL.
@@ -388,7 +400,7 @@ To Do
 [] Baisc Alerting + Prometheus alerts vs Grafana alerts.
 [] Integrating alerts with tool like pagerduty.
 
-References:
+### References:
 - https://prometheus.io/docs/
 - https://www.robustperception.io/how-does-a-prometheus-histogram-work
 - https://www.robustperception.io/how-does-a-prometheus-summary-work
