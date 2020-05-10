@@ -170,6 +170,7 @@ I want to observe the time taken to process api  requests. Instead of storing th
 Lets say Request 1 for endpoint “/ping” takes 0.25 s. The count values for the buckets will be. 
 
 > /ping
+
 Bucket     | Count
 -----------| -------------
 0 - 0.3    | 1
@@ -186,6 +187,7 @@ Note: +Inf bucket is added by default.
 Request 2 for endpoint “/ping” takes 0.4s The count values for the buckets will be this.
 
 > /ping
+
 Bucket     | Count
 -----------| -------------
 0 - 0.3    | 1
