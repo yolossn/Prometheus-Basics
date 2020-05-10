@@ -25,6 +25,7 @@ The basic components of prometheus are:
 - Prometheus Server (The server which scraps and stores the metrics data).
 - Client Library which is used to calculate and expose the metrics.
 - Alert manager to raise alerts based on preset rules.
+  
 (Note: Apart from this prometheus has push gateways which I am not covering here).
 
 <p align="center">
@@ -119,4 +120,30 @@ scrape_configs:
 ```
 <p align="center">
   <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus2.gif">
+</p>
+
+
+# Type of metrics.
+
+There are four types of metrics which prometheus client libraries support as of May 2020. They are:
+1. Counter 
+2. Gauge
+3. Histogram
+4. Summary
+
+## Counter:
+
+Counter is a metric value which can only increase or reset i.e the value cannot reduce than the previous value. It can be used for metrics like number of requests, no of errors etc.
+
+> go_gc_duration_seconds_count
+<p align="center">
+  <img width="1600" height="896" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/counter_example.png">
+</p>
+
+The rate() function takes the history of metrics over a time frame and calculates how fast value is increasing per second. Rate is applicable on counter values only.
+
+> rate(go_gc_duration_seconds_count[5m])
+
+<p align="center">
+  <img width="1600" height="896" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/rate_example.png">
 </p>
