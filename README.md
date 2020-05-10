@@ -50,11 +50,11 @@ So there is an application for example let us consider it to be a web server. I 
 I set prometheus up and expose my web server accessible for the frontend or other client to use.
 
 
-At 11:00 PM when I make my web server open to consumption. Prometheus scrapes the count metric and stores the value as 0
+At 11:00 PM when I make the server open to consumption. Prometheus scrapes the count metric and stores the value as 0
 
-By 11:01 PM one request is processed by my web server . The instrumentation logic in my code makes the count to 1. When prometheus scraps the metric the value of count is 1 now
+By 11:01 PM one request is processed. The instrumentation logic in my code makes the count to 1. When prometheus scraps the metric the value of count is 1 now
 
-By 11:02 PM two requests are processed by my web server and the request count is 1+2 = 3 now. Similarly metrics are scraped and stored
+By 11:02 PM two requests are processed and the request count is 1+2 = 3 now. Similarly metrics are scraped and stored
 
 The user can control the frequency at which metrics are scraped by prometheus
 
