@@ -65,3 +65,27 @@ A simple Line chart created on my Request Count metric will look like this
 
 I can scrape multiple metrics which will be useful to understand what is happening in my application and create multiple charts on them. Group the charts into a dashboard and use it to understand what is happening in my application.
 
+# Show me how it is done.
+
+Let’s get our hands dirty and setup prometheus. Prometheus is written using golang and all you need is the binary compiled for your operating system. Download the binary corresponding to your operating system from [here](https://prometheus.io/download/). 
+
+Prometheus exposes its own metrics which can be consumed by itself or another prometheus server.
+
+Now that we have Prometheus, the next step is to run it. All that we need is just the binary and a configuration file. Prometheus uses yaml files for configuration.
+
+*config.yml*
+```
+global:
+ scrape_interval: 15s
+ 
+scrape_configs:
+ - job_name: prometheus
+   static_configs:
+       - targets: ["localhost:9090"]
+```
+
+In the above configuration file we have mentioned the scrape_interval i.e how frequently you want prometheus to scrape the metrics. We have added scrape_configs which has a name and target to scrape the metrics from. Prometheus by default listens on port 9090. So I have added it.
+
+<p align="center">
+  <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus1.gif">
+</p>
