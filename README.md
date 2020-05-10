@@ -56,7 +56,7 @@ Time Stamp | Request Count (metric)
 
 (Note: This table is just a representation for understanding purposes. Prometheus doesn’t store the values in the exact format)
 
-Prometheus also has a server which exposes the metrics which are stored by scraping. This server is used to query the metrics, create dashboards/charts on it etc.
+Prometheus also has a server which exposes the metrics which are stored by scraping. This server is used to query the metrics, create dashboards/charts on it etc. PromQL is used to query the metrics.
 
 A simple Line chart created on my Request Count metric will look like this
 
@@ -303,9 +303,9 @@ func main() {
 }
 ```
 
-The prometheus.MustRegister function registers the pingCounter to the default Register.
+The `prometheus.MustRegister` function registers the pingCounter to the default Register.
 To expose the metrics the golang prometheus client library provides the promhttp package. 
-promhttp.Handler() provides a http.Handler which exposes the metrics registered in the Default Register.
+`promhttp.Handler()` provides a `http.Handler` which exposes the metrics registered in the Default Register.
 
 *serverWithMetric.go*
 ```
@@ -369,3 +369,30 @@ scrape_configs:
 <p align="center">
   <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus3.gif">
 </p>
+
+Note:
+- Make sure the auth mechanism used by your application is supported by prometheus
+- `promhttp.Handler` gzips the response, If you are using a gzip middleware then you must implement some skipper logic to avoid compressing the response twice.
+
+I hope I did justice and helped you understand the basics of prometheus.
+**Where to go from here:**
+- It is important to understand PromQL extensively to take advantage of the metrics which one has collected. Remember the goal is not just to collect metrics but to derive answers for application related questions.  This
+https://medium.com/@valyala/promql-tutorial-for-beginners-9ab455142085 is a very good resource to get started with PromQL.
+
+
+
+To Do 
+[] Integration with grafana to create dashboards
+[] Add code samples for all metric types.
+[] Explain about the concept of Service Discovery in kubernetes.
+[] Baisc Alerting + Prometheus alerts vs Grafana alerts.
+[] Integrating alerts with tool like pagerduty.
+
+References:
+- https://prometheus.io/docs/
+- https://www.robustperception.io/how-does-a-prometheus-histogram-work
+- https://www.robustperception.io/how-does-a-prometheus-summary-work
+- https://www.robustperception.io/how-does-a-prometheus-gauge-work
+- https://www.robustperception.io/how-does-a-prometheus-counter-work
+- https://www.youtube.com/watch?v=nJMRmhbY5hY
+- https://godoc.org/github.com/prometheus/client_golang/prometheus
