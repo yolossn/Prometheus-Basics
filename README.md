@@ -1,6 +1,6 @@
 <p align="center">
 <h1>Prometheus-Basics</h1>
-<p>A beginner friendly introduction to prometheus.</p>
+<p align="center">A beginner friendly introduction to prometheus.</p>
 
   <img width="480" height="480" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
 </p>
@@ -105,7 +105,7 @@ In the above configuration file we have mentioned the scrape_interval i.e how fr
 Now we have Prometheus up and running and scraping its own metics every 15s. Prometheus has standard exporters available to export metrics. Next we will run a node exporter which is an exporter for machine metrics and scrape the same using prometheus.
 Download node metrics exporter from [here](https://prometheus.io/download/#node_exporter)
 
-There are many standard exporters available like node exporter you can find them [here](https://github.com/roaldnefs/awesome-prometheus#exporters)
+There are many standard exporters available like node exporter you can find them [here](https://prometheus.io/docs/instrumenting/exporters)
 
 **Run the node exporter in a terminal.**
 > ./node_exporter
