@@ -2,7 +2,7 @@
 # Prometheus-Basics
 A beginner friendly introduction to prometheus.
 
-  <img width="751" height="281" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
+  <img width="480" height="480" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
 </p>
 
 
