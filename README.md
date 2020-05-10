@@ -98,6 +98,8 @@ scrape_configs:
 
 In the above configuration file we have mentioned the scrape_interval i.e how frequently you want prometheus to scrape the metrics. We have added scrape_configs which has a name and target to scrape the metrics from. Prometheus by default listens on port 9090. So I have added it.
 
+> prometheus --config.file=prometheus.yml
+
 <p align="center">
   <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus1.gif">
 </p>
@@ -129,6 +131,9 @@ scrape_configs:
    static_configs:
        - targets: ["localhost:9100"]
 ```
+
+> prometheus --config.file=node_exporter.yml
+
 <p align="center">
   <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus2.gif">
 </p>
@@ -376,6 +381,8 @@ scrape_configs:
    static_configs:
        - targets: ["localhost:8090"]
 ```
+
+> prometheus --config.file=simple_server.yml
 
 <p align="center">
   <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus3.gif">
