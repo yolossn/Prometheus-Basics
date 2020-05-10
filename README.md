@@ -179,6 +179,7 @@ Bucket     | Count
 0.7 - 1    | 1
 1 - 1.2    | 1
 +Inf       | 1
+
 Note: +Inf bucket is added by default.
 
 
@@ -200,6 +201,8 @@ Bucket     | Count
 Since 0.4 lies in the seconds bucket(0.3-0.5) all the buckets above the calculated values count is increased. 
 Histogram is used to find average and percentile values.
 
+Let's see a histogram metric scraped from pormetheus and apply few functions.
+
 > prometheus_http_request_duration_seconds_bucket{handler="/graph"}
 
 <p align="center">
@@ -219,6 +222,18 @@ The graph shows that the 90th percentile is 0.09, To find the histogram_quantile
 <p align="center">
   <img width="800" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/histogram_rate_example.png">
 </p>
+
+
+# Summary
+
+Summary is similar to histogram and calculates quantiles which can be configured, but it is calculated on the application level hence aggregation of metrics from multiple instances of the same process is not possible. It is used when the buckets of a metric is not known beforehand and is highly recommended to use histogram over summary whenever possible. Calculating summary on the application level is also quite expensive and it is not recommended to be used. 
+
+
+### Short Summary on Metric Types:
+<p align="center">
+  <img width="800" height="700" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/summary_of_metric_types.png">
+</p>
+[Source](https://www.youtube.com/watch?v=nJMRmhbY5hY)
 
 
 
