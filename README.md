@@ -15,7 +15,7 @@ Prometheus is a system monitoring and alerting system. It was opensourced by Sou
 
 Metrics in layman terms is a standard for measurement. What we want to measure depends from application to application. For a web server it can be request times, for a database it can be CPU usage or number of active connections etc. 
 
-Metrics play an important role in understanding why your application is working in a certain way. If you run a web application and someone comes up to you and says that the application is slow. You will need some information to find out what is happening with your application. For example the application can become slow when the number of requests are high. If you have the request count metric you can spot the reason and increase the number of servers to handle the heavy load. Whenever you are defining the metrics for your application you must put on your detective hat and ask this question **what all information will be important for me to help debug if any issue occurs in my application?**
+Metrics play an important role in understanding why your application is working in a certain way. If you run a web application and someone comes up to you and says that the application is slow. You will need some information to find out what is happening with your application. For example the application can become slow when the number of requests are high. If you have the request count metric you can spot the reason and increase the number of servers to handle the heavy load. Whenever you are defining the metrics for your application you must put on your detective hat and ask this question **what all information will be important for me to debug if any issue occurs in my application?**
 
 Analogy: I always use this analogy to simply understand what a monitoring system does. When I was young I wanted to grow tall and to measure it I used height as a metric. I asked my dad to measure my height everyday and keep a table of my height on each day. So in this case my dad is my monitoring system and the metric was my height.
 
@@ -233,8 +233,139 @@ Summary is similar to histogram and calculates quantiles which can be configured
 <p align="center">
   <img width="800" height="700" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/summary_of_metric_types.png">
 </p>
+
 [Source](https://www.youtube.com/watch?v=nJMRmhbY5hY)
 
 
 
+# Create a simple exporter
 
+We will create a request counter metric exporter using golang.
+
+*server.go*
+```
+package main
+ 
+import (
+   "fmt"
+   "net/http"
+)
+ 
+func ping(w http.ResponseWriter, req *http.Request){
+   fmt.Fprintf(w,"pong")
+}
+ 
+func main() {
+   http.HandleFunc("/ping",ping)
+  
+   http.ListenAndServe(":8090", nil)
+}
+```
+
+We have a simple server which when hit on localhost:8090/ping endpoint sends back pong
+
+<p align="center">
+  <img width="1600" height="362" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/server.png">
+</p>
+
+Now we will add a metric to the server which will instrument the number of requests made to the ping endpoint.
+
+We will use the counter metric type for this as we know the request count doesn’t go down and only increases.
+
+Create a prometheus counter
+
+```
+var pingCounter = prometheus.NewCounter(
+   prometheus.CounterOpts{
+       Name: "ping_request_count",
+       Help: "No of request handled by Ping handler",
+   },
+)
+```
+
+Next we update the ping Handler to increase the count of the counter using `pingCounter.Inc()`.
+
+```
+func ping(w http.ResponseWriter, req *http.Request) {
+   pingCounter.Inc()
+   fmt.Fprintf(w, "pong")
+}
+```
+
+Next we register the counter to the Default Register and expose the metrics. 
+
+```
+func main() {
+   prometheus.MustRegister(pingCounter)
+   http.HandleFunc("/ping", ping)
+   http.Handle("/metrics", promhttp.Handler())
+   http.ListenAndServe(":8090", nil)
+}
+```
+
+The prometheus.MustRegister function registers the pingCounter to the default Register.
+To expose the metrics the golang prometheus client library provides the promhttp package. 
+promhttp.Handler() provides a http.Handler which exposes the metrics registered in the Default Register.
+
+*serverWithMetric.go*
+```
+package main
+ 
+import (
+   "fmt"
+   "net/http"
+ 
+   "github.com/prometheus/client_golang/prometheus"
+   "github.com/prometheus/client_golang/prometheus/promhttp"
+)
+ 
+var pingCounter = prometheus.NewCounter(
+   prometheus.CounterOpts{
+       Name: "ping_request_count",
+       Help: "No of request handled by Ping handler",
+   },
+)
+ 
+func ping(w http.ResponseWriter, req *http.Request) {
+   pingCounter.Inc()
+   fmt.Fprintf(w, "pong")
+}
+ 
+func main() {
+   prometheus.MustRegister(pingCounter)
+ 
+   http.HandleFunc("/ping", ping)
+   http.Handle("/metrics", promhttp.Handler()) 
+   http.ListenAndServe(":8090", nil)
+}
+```
+
+Now hit the localhost:8090/ping endpoint a couple of times and sending a request to localhost:8090 will provide the metrics.
+
+<p align="center">
+  <img width="1600" height="949" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/ping_count.png">
+</p>
+
+Here the ping_request_count shows that `/ping` endpoint was called 3 times.
+
+The DefaultRegister comes with a collector for go runtime metrics and that is why we see other metrics like go_threads, go_goroutines etc.
+
+We have built our first metric exporter. Let’s  update our prometheus config to scrape the metrics from our server.
+
+*simple_server.yml*
+```
+global:
+ scrape_interval: 15s
+ 
+scrape_configs:
+ - job_name: prometheus
+   static_configs:
+       - targets: ["localhost:9090"]
+ - job_name: simple_server
+   static_configs:
+       - targets: ["localhost:8090"]
+```
+
+<p align="center">
+  <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus3.gif">
+</p>
