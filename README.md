@@ -28,3 +28,4 @@ The basic components of prometheus are:
 - Alert manager to raise alerts based on preset rules.
 (Note: Apart from this prometheus has push gateways which I am not covering here).
 
+![Architecture](https://github.com/yolossn/Prometheus-Basics/blob/master/images/architecture.png)
