@@ -13,14 +13,14 @@
 2. [What are metrics and why is it important ?](https://github.com/yolossn/Prometheus-Basics#what-is-metrics-and-why-should-i-worry-about-it-)
 3. [Basic Architecture of Prometheus](https://github.com/yolossn/Prometheus-Basics#basic-architecture-of-prometheus)
 4. [Show me how it is done](https://github.com/yolossn/Prometheus-Basics#show-me-how-it-is-done)
-5. [Type of metrics](https://github.com/yolossn/Prometheus-Basics#type-of-metrics)
+5. [Types of metrics](https://github.com/yolossn/Prometheus-Basics#types-of-metrics)
 6. [Create a simple exporter](https://github.com/yolossn/Prometheus-Basics#create-a-simple-exporter)
 7. [References](https://github.com/yolossn/Prometheus-Basics#References)
 
 
 # What is prometheus ?
 
-Prometheus is a system monitoring and alerting system. It was opensourced by SoundCloud in 2012 and was incubated by Cloud Native Computing Foundation. Prometheus stores all the data as time series, i.e metrics information is stored along with the timestamp at which it was recorded, optional key-value pairs called as labels can also be stored along with metrics. 
+Prometheus is a system monitoring and alerting system. It was opensourced by SoundCloud in 2012 and was incubated by Cloud Native Computing Foundation. Prometheus stores all the metrics data as time series, i.e metrics information is stored along with the timestamp at which it was recorded, optional key-value pairs called as labels can also be stored along with metrics. 
 
 # What are metrics and why is it important?
 
@@ -79,7 +79,7 @@ I can scrape multiple metrics which will be useful to understand what is happeni
 
 # Show me how it is done.
 
-Let’s get our hands dirty and setup prometheus. Prometheus is written using golang and all you need is the binary compiled for your operating system. Download the binary corresponding to your operating system from [here](https://prometheus.io/download/). 
+Let’s get our hands dirty and setup prometheus. Prometheus is written using golang and all you need is the binary compiled for your operating system. Download the binary corresponding to your operating system from [here](https://prometheus.io/download/) and add the binary to your path.
 
 Prometheus exposes its own metrics which can be consumed by itself or another prometheus server.
 
@@ -139,7 +139,7 @@ scrape_configs:
 </p>
 
 
-# Type of metrics.
+# Types of metrics.
 
 There are four types of metrics which prometheus client libraries support as of May 2020. They are:
 1. Counter 
