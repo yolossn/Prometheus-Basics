@@ -1,7 +1,7 @@
-<p align="center">
-<h1>Prometheus-Basics</h1>
+<h1 align="center">Prometheus-Basics</h1>
 <p align="center">A beginner friendly introduction to prometheus.</p>
 
+<p align="center">
   <img width="480" height="480" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
 </p>
 
@@ -394,11 +394,11 @@ https://medium.com/@valyala/promql-tutorial-for-beginners-9ab455142085 is a very
 
 
 To Do 
-[] Integration with grafana to create dashboards
-[] Add code samples for all metric types.
-[] Explain about the concept of Service Discovery in kubernetes.
-[] Baisc Alerting + Prometheus alerts vs Grafana alerts.
-[] Integrating alerts with tool like pagerduty.
+- [ ] Integration with grafana to create dashboards
+- [ ] Add code samples for all metric types.
+- [ ] Explain about the concept of Service Discovery in kubernetes.
+- [ ] Baisc Alerting + Prometheus alerts vs Grafana alerts.
+- [ ] Integrating alerts with tool like pagerduty.
 
 ### References:
 - https://prometheus.io/docs/
