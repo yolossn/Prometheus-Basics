@@ -403,7 +403,7 @@ https://medium.com/@valyala/promql-tutorial-for-beginners-9ab455142085 is a very
 To Do 
 - [ ] Integration with grafana to create dashboards
 - [ ] Add code samples for all metric types.
-- [ ] Explain about the concept of Service Discovery in kubernetes.
+- [ ] Explain about the concept of Service Discovery for integrating with kubernetes.
 - [ ] Baisc Alerting + Prometheus alerts vs Grafana alerts.
 - [ ] Integrating alerts with tool like pagerduty.
 
