@@ -137,7 +137,7 @@ Counter is a metric value which can only increase or reset i.e the value cannot 
 
 > go_gc_duration_seconds_count
 <p align="center">
-  <img width="1600" height="896" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/counter_example.png">
+  <img width="800" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/counter_example.png">
 </p>
 
 The rate() function takes the history of metrics over a time frame and calculates how fast value is increasing per second. Rate is applicable on counter values only.
@@ -145,5 +145,79 @@ The rate() function takes the history of metrics over a time frame and calculate
 > rate(go_gc_duration_seconds_count[5m])
 
 <p align="center">
-  <img width="1600" height="896" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/rate_example.png">
+  <img width="800" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/rate_example.png">
 </p>
+
+## Gauge:
+    
+Gauge is a number which can either go up or down. It can be used for metrics like number of pods in a cluster, number of events in an queue etc.
+
+> go_memstats_heap_alloc_bytes
+
+<p align="center">
+  <img width="800" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/gauge_example.png">
+</p>
+
+PromQL functions like max_over_time, min_over_time and avg_over_time can be used to query gauge metrics
+
+## Histogram
+
+Histogram is a little complex metric type when compared to the ones we have seen. Histogram can be used for any calculated value which is counted based on bucket values, the buckets can be configured by the user. It is a cumulative metric and provides sum of all the values by default. This is applicable for metrics like request time, cpu temperature  etc
+
+Example:
+I want to observe the time taken to process api  requests. Instead of storing the request time for each request, histogram metric allows us to approximate and store frequency of requests which fall into particular buckets. I define buckets for time taken like 0.3,0.5,0.7,1,1.2. So these are my buckets and once the time taken for a request is calculated I add the count to all the buckets which are higher than the value.
+
+Lets say Request 1 for endpoint “/ping” takes 0.25 s. The count values for the buckets will be. 
+
+> /ping
+Bucket     | Count
+-----------| -------------
+0 - 0.3    | 1
+0.3 - 0.5  | 1
+0.5 - 0.7  | 1
+0.7 - 1    | 1
+1 - 1.2    | 1
++Inf       | 1
+Note: +Inf bucket is added by default.
+
+
+(Since histogram is a cumulative frequency 1 is added to all the buckets which are greater than the value)
+
+Request 2 for endpoint “/ping” takes 0.4s The count values for the buckets will be this.
+
+> /ping
+Bucket     | Count
+-----------| -------------
+0 - 0.3    | 1
+0.3 - 0.5  | 2
+0.5 - 0.7  | 2
+0.7 - 1    | 2
+1 - 1.2    | 2
++Inf       | 2
+
+Since 0.4 lies in the seconds bucket(0.3-0.5) all the buckets above the calculated values count is increased. 
+Histogram is used to find average and percentile values.
+
+> prometheus_http_request_duration_seconds_bucket{handler="/graph"}
+
+<p align="center">
+  <img width="800" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/histogram_example.png">
+</p>
+
+histogram_quantile() function can be used to calculate calculate quantiles from histogram
+
+<p align="center">
+  <img width="800" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/histogram_quantile_example.png">
+</p>
+
+The graph shows that the 90th percentile is 0.09, To find the histogram_quantile over last 5m you can use the rate() and time frame
+
+> histogram_quantile(0.9, rate(prometheus_http_request_duration_seconds_bucket{handler="/graph"}[5m]))
+
+<p align="center">
+  <img width="800" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/histogram_rate_example.png">
+</p>
+
+
+
+
