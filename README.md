@@ -58,7 +58,6 @@ By 11:02 PM two requests are processed and the request count is 1+2 = 3 now. Sim
 
 The user can control the frequency at which metrics are scraped by prometheus
 
-
 Time Stamp | Request Count (metric)
 -----------| -------------
 11:00 PM   | 0
@@ -86,7 +85,7 @@ Prometheus exposes its own metrics which can be consumed by itself or another pr
 Now that we have Prometheus, the next step is to run it. All that we need is just the binary and a configuration file. Prometheus uses yaml files for configuration.
 
 *prometheus.yml*
-```
+```yml
 global:
  scrape_interval: 15s
  
@@ -119,7 +118,7 @@ There are many standard exporters available like node exporter you can find them
 Next Add node exporter to the list of scrape_configs
 
 *node_exporter.yml*
-```
+```yml
 global:
  scrape_interval: 15s
  
@@ -259,7 +258,7 @@ Summary is similar to histogram and calculates quantiles which can be configured
 We will create a request counter metric exporter using golang.
 
 *server.go*
-```
+```go
 package main
  
 import (
@@ -290,7 +289,7 @@ We will use the counter metric type for this as we know the request count doesnâ
 
 Create a prometheus counter
 
-```
+```go
 var pingCounter = prometheus.NewCounter(
    prometheus.CounterOpts{
        Name: "ping_request_count",
@@ -301,7 +300,7 @@ var pingCounter = prometheus.NewCounter(
 
 Next we update the ping Handler to increase the count of the counter using `pingCounter.Inc()`.
 
-```
+```go
 func ping(w http.ResponseWriter, req *http.Request) {
    pingCounter.Inc()
    fmt.Fprintf(w, "pong")
@@ -310,7 +309,7 @@ func ping(w http.ResponseWriter, req *http.Request) {
 
 Next we register the counter to the Default Register and expose the metrics. 
 
-```
+```go
 func main() {
    prometheus.MustRegister(pingCounter)
    http.HandleFunc("/ping", ping)
@@ -324,7 +323,7 @@ To expose the metrics the golang prometheus client library provides the promhttp
 `promhttp.Handler()` provides a `http.Handler` which exposes the metrics registered in the Default Register.
 
 *serverWithMetric.go*
-```
+```go
 package main
  
 import (
@@ -369,7 +368,7 @@ The DefaultRegister comes with a collector for go runtime metrics and that is wh
 We have built our first metric exporter. Letâ€™s  update our prometheus config to scrape the metrics from our server.
 
 *simple_server.yml*
-```
+```yml
 global:
  scrape_interval: 15s
  
