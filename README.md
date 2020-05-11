@@ -10,7 +10,7 @@
 
 ## Table of Contents
 1. [What is prometheus ?](https://github.com/yolossn/Prometheus-Basics#what-is-prometheus-)
-2. [What are metrics and why is it important ?](https://github.com/yolossn/Prometheus-Basics#what-is-metrics-and-why-should-i-worry-about-it-)
+2. [What are metrics and why is it important ?](https://github.com/yolossn/Prometheus-Basics#what-are-metrics-and-why-is-it-important)
 3. [Basic Architecture of Prometheus](https://github.com/yolossn/Prometheus-Basics#basic-architecture-of-prometheus)
 4. [Show me how it is done](https://github.com/yolossn/Prometheus-Basics#show-me-how-it-is-done)
 5. [Types of metrics](https://github.com/yolossn/Prometheus-Basics#types-of-metrics)
