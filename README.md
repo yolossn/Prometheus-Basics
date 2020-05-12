@@ -44,7 +44,7 @@ The basic components of prometheus are:
 </p>
 
 
-Let's consider a web server as an example application. So there is an application for example let us consider it to be a web server. I want to extract certain metric like the number of api calls processed by my web server. So I add certain instrumentation code using the prometheus client library and expose the metrics information. Now that my web server also exposes its metrics I want it to be scraped by prometheus. So I run prometheus in separately and configure it to fetch the metrics from the web server which is listening on xyz IP address port 7500 at specific time interval say every minute. 
+Let's consider a web server as an example application. I want to extract certain metric like the number of api calls processed by my web server. So I add certain instrumentation code using the prometheus client library and expose the metrics information. Now that my web server also exposes its metrics I want it to be scraped by prometheus. So I run prometheus in separately and configure it to fetch the metrics from the web server which is listening on xyz IP address port 7500 at specific time interval say every minute. 
 
 
 I set prometheus up and expose my web server accessible for the frontend or other client to use.
