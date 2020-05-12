@@ -2,7 +2,7 @@
 <p align="center">A beginner friendly introduction to prometheus.</p>
 
 <p align="center">
-  <img width="480" height="480" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
+  <img width="360" height="360" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
 </p>
 
 
@@ -10,7 +10,7 @@
 
 ## Table of Contents
 1. [What is prometheus ?](https://github.com/yolossn/Prometheus-Basics#what-is-prometheus-)
-2. [What are metrics and why is it important ?](https://github.com/yolossn/Prometheus-Basics#what-is-metrics-and-why-should-i-worry-about-it-)
+2. [What are metrics and why is it important ?](https://github.com/yolossn/Prometheus-Basics#what-are-metrics-and-why-is-it-important)
 3. [Basic Architecture of Prometheus](https://github.com/yolossn/Prometheus-Basics#basic-architecture-of-prometheus)
 4. [Show me how it is done](https://github.com/yolossn/Prometheus-Basics#show-me-how-it-is-done)
 5. [Types of metrics](https://github.com/yolossn/Prometheus-Basics#types-of-metrics)
@@ -112,7 +112,7 @@ There are many standard exporters available like node exporter you can find them
 > ./node_exporter
 
 <p align="center">
-  <img width="1600" height="276" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/node_exporter.png">
+  <img width="1000" height="210" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/node_exporter.png">
 </p>
 
 Next Add node exporter to the list of scrape_configs
@@ -246,7 +246,7 @@ Summary is similar to histogram and calculates quantiles which can be configured
 
 ### Short Summary on Metric Types:
 <p align="center">
-  <img width="800" height="700" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/summary_of_metric_types.png">
+  <img width="600" height="500" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/summary_of_metric_types.png">
 </p>
 
 [Source](https://www.youtube.com/watch?v=nJMRmhbY5hY)
@@ -280,7 +280,7 @@ func main() {
 We have a simple server which when hit on localhost:8090/ping endpoint sends back pong
 
 <p align="center">
-  <img width="1600" height="362" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/server.png">
+  <img width="1000" height="240" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/server.png">
 </p>
 
 Now we will add a metric to the server which will instrument the number of requests made to the ping endpoint.
@@ -358,7 +358,7 @@ func main() {
 Now hit the localhost:8090/ping endpoint a couple of times and sending a request to localhost:8090 will provide the metrics.
 
 <p align="center">
-  <img width="1600" height="949" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/ping_count.png">
+  <img width="1000" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/ping_count.png">
 </p>
 
 Here the ping_request_count shows that `/ping` endpoint was called 3 times.
