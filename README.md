@@ -103,7 +103,7 @@ In the above configuration file we have mentioned the scrape_interval i.e how fr
   <img width="580" height="400" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/prometheus1.gif">
 </p>
 
-Now we have Prometheus up and running and scraping its own metics every 15s. Prometheus has standard exporters available to export metrics. Next we will run a node exporter which is an exporter for machine metrics and scrape the same using prometheus.
+Now we have Prometheus up and running and scraping its own metrics every 15s. Prometheus has standard exporters available to export metrics. Next we will run a node exporter which is an exporter for machine metrics and scrape the same using prometheus.
 Download node metrics exporter from [here](https://prometheus.io/download/#node_exporter)
 
 There are many standard exporters available like node exporter you can find them [here](https://prometheus.io/docs/instrumenting/exporters)
