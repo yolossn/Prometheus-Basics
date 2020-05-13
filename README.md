@@ -216,7 +216,7 @@ Bucket     | Count
 Since 0.4 lies in the seconds bucket(0.3-0.5) all the buckets above the calculated values count is increased. 
 Histogram is used to find average and percentile values.
 
-Let's see a histogram metric scraped from pormetheus and apply few functions.
+Let's see a histogram metric scraped from prometheus and apply few functions.
 
 > prometheus_http_request_duration_seconds_bucket{handler="/graph"}
 
