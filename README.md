@@ -391,13 +391,13 @@ Note:
 - Make sure the authentication mechanism used by your application is supported by prometheus
 - `promhttp.Handler` gzips the response, If you are using a gzip middleware then you must implement some skipper logic to avoid compressing the response twice.
 
-Now that we have our server with the `ping_request_count` metric let's create a visualization dashboard. For this, we will use [Grafana](https://grafana.com/). If you wonder why should one use Grafana when I can create graphs using Prometheus itself. The answer is that the graph that we use to visualize our queries is used for ad-hoc queries and debugging. Prometheus official docs suggest using Grafana or Console Templates for graphs. [Refer](https://prometheus.io/docs/visualization/browser/) 
+Now that we have our server with `ping_request_count` metric let's create a visualization dashboard. For this, we will use [Grafana](https://grafana.com/). If you wonder why should one use Grafana when we can create graphs using Prometheus. The answer is that the graph that we use to visualize our queries is used for ad-hoc queries and debugging. Prometheus official docs suggest using Grafana or Console Templates for graphs. [Refer](https://prometheus.io/docs/visualization/browser/) 
 
 Console Templates is a way to create graphs using golang templates which I am not covering as it has a learning curve. Grafana is an analytics platform that allows you to query,visualize, and set alerts on your metrics. Comparatively Grafana is easy to use for a beginner. 
 
 Install Grafana by following the steps for your operating system from [here](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-operating-systems).
 
-Once Grafana is installed successfully go to [localhost:3000](localhost:3000) and Grafana dashboard should be visible. The default username and password is `admin`. 
+Once Grafana is installed successfully go to [localhost:3000](http://localhost:3000) and Grafana dashboard should be visible. The default username and password is `admin`. 
 
 <p align="center">
   <img width="1000" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/grafana_login.png">
@@ -426,6 +426,8 @@ Now we have successfully added Prometheus as our data source.
 
 
 Tada 🎉 We have created our first dashboard using Grafana.
+
+I hope I did justice to your time and helped you understand the basics of prometheus.
 
 **Where to go from here:**
 - It is important to understand PromQL extensively to take advantage of the metrics which one has collected. Remember the goal is not just to collect metrics but to derive answers for application related questions.  [This](https://medium.com/@valyala/promql-tutorial-for-beginners-9ab455142085) is a very good resource to get started with PromQL.
