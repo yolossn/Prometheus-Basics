@@ -400,13 +400,13 @@ Install Grafana by following the steps for your operating system from [here](htt
 Once Grafana is installed successfully go to [localhost:3000](http://localhost:3000) and Grafana dashboard should be visible. The default username and password is `admin`. 
 
 <p align="center">
-  <img width="1000" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/grafana_login.png">
+  <img width="1000" height="420" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/grafana_login.png">
 </p>
 
 Let's add a source to grafana by clicking on the gear icon in the side bar and select Data Sources.
 > ⚙ > Data Sources 
 <p align="center">
-  <img width="1000" height="560" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/grafana_add_source.png">
+  <img width="1000" height="420" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/grafana_add_source.png">
 </p>
 
 If you see Grafana also supports multiple data sources other than Prometheus like graphite, postgreSQL etc.
