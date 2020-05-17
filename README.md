@@ -425,7 +425,7 @@ Now we have successfully added Prometheus as our data source.
 </p>
 
 
-Tada 🎉 We have made our first dashboard using Grafana.
+Tada 🎉 We have created our first dashboard using Grafana.
 
 **Where to go from here:**
 - It is important to understand PromQL extensively to take advantage of the metrics which one has collected. Remember the goal is not just to collect metrics but to derive answers for application related questions.  [This](https://medium.com/@valyala/promql-tutorial-for-beginners-9ab455142085) is a very good resource to get started with PromQL.
