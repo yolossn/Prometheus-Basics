@@ -78,7 +78,7 @@ I can scrape multiple metrics which will be useful to understand what is happeni
 
 # Show me how it is done.
 
-Let’s get our hands dirty and setup prometheus. Prometheus is written using golang and all you need is the binary compiled for your operating system. Download the binary corresponding to your operating system from [here](https://prometheus.io/download/) and add the binary to your path.
+Let’s get our hands dirty and setup prometheus. Prometheus is written using [Go](https://golang.org/) and all you need is the binary compiled for your operating system. Download the binary corresponding to your operating system from [here](https://prometheus.io/download/) and add the binary to your path.
 
 Prometheus exposes its own metrics which can be consumed by itself or another prometheus server.
 
@@ -255,7 +255,7 @@ Summary is similar to histogram and calculates quantiles which can be configured
 
 # Create a simple exporter
 
-We will create a request counter metric exporter using golang.
+We will create a request counter metric exporter using Go.
 
 *server.go*
 ```go
@@ -319,7 +319,7 @@ func main() {
 ```
 
 The `prometheus.MustRegister` function registers the pingCounter to the default Register.
-To expose the metrics the golang prometheus client library provides the promhttp package. 
+To expose the metrics the Go Prometheus client library provides the promhttp package. 
 `promhttp.Handler()` provides a `http.Handler` which exposes the metrics registered in the Default Register.
 
 *serverWithMetric.go*
@@ -393,7 +393,7 @@ Note:
 
 Now that we have our server with `ping_request_count` metric let's create a visualization dashboard. For this, we will use [Grafana](https://grafana.com/). If you wonder why should one use Grafana when we can create graphs using Prometheus. The answer is that the graph that we use to visualize our queries is used for ad-hoc queries and debugging. Prometheus official docs suggest using Grafana or Console Templates for graphs. [Refer](https://prometheus.io/docs/visualization/browser/) 
 
-Console Templates is a way to create graphs using golang templates which I am not covering as it has a learning curve. Grafana is an analytics platform that allows you to query,visualize, and set alerts on your metrics. Comparatively Grafana is easy to use for a beginner. 
+Console Templates is a way to create graphs using Go templates which I am not covering as it has a learning curve. Grafana is an analytics platform that allows you to query,visualize, and set alerts on your metrics. Comparatively Grafana is easy to use for a beginner. 
 
 Install Grafana by following the steps for your operating system from [here](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-operating-systems).
 
