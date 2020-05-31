@@ -449,6 +449,7 @@ docker-compose up
 ```
 - http://localhost:9090 - prometheus UI
 - http://localhost:8090 - ping/pong service
+- http://localhost:3000/d/WdZVAykGk/ping-service?orgId=1 - grafana dashboard (admin:admin)
 
 ### References:
 - https://prometheus.io/docs/

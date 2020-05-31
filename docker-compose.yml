@@ -25,3 +25,16 @@ services:
       - 8090:8090
     networks:
       - p-network
+
+  # visualize metrics with grafana
+  grafana:
+    image: grafana/grafana
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/:/etc/grafana/provisioning/
+    networks:
+      - p-network
+    restart: always
