@@ -15,7 +15,7 @@
 4. [Show me how it is done](https://github.com/yolossn/Prometheus-Basics#show-me-how-it-is-done)
 5. [Types of metrics](https://github.com/yolossn/Prometheus-Basics#types-of-metrics)
 6. [Create a simple exporter](https://github.com/yolossn/Prometheus-Basics#create-a-simple-exporter)
-7. [Run prometheus in docker](https://github.com/yolossn/Prometheus-Basics#run-prometheus-in-docker)
+7. [Run prometheus and grafana in docker](https://github.com/yolossn/Prometheus-Basics#run-prometheus-and-grafana-in-docker)
 8. [References](https://github.com/yolossn/Prometheus-Basics#References)
 
 
