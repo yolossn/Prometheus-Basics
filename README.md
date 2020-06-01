@@ -440,7 +440,7 @@ To Do
 - [ ] Basic Alerting + Prometheus alerts vs Grafana alerts.
 - [ ] Integrating alerts with tool like pagerduty.
 
-### Run prometheus in docker
+### Run prometheus and grafana in docker
 
 You can run example in docker:
  
