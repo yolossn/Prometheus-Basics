@@ -442,7 +442,7 @@ To Do
 
 ### Run prometheus and grafana in docker
 
-You can run example in docker:
+You can run the whole setup of simple ping server, Prometheus and Grafana using docker. Just run the following command.
  
 ```bash
 docker-compose up
