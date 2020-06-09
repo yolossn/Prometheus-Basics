@@ -15,7 +15,8 @@
 4. [Show me how it is done](https://github.com/yolossn/Prometheus-Basics#show-me-how-it-is-done)
 5. [Types of metrics](https://github.com/yolossn/Prometheus-Basics#types-of-metrics)
 6. [Create a simple exporter](https://github.com/yolossn/Prometheus-Basics#create-a-simple-exporter)
-7. [References](https://github.com/yolossn/Prometheus-Basics#References)
+7. [Run prometheus and grafana in docker](https://github.com/yolossn/Prometheus-Basics#run-prometheus-and-grafana-in-docker)
+8. [References](https://github.com/yolossn/Prometheus-Basics#References)
 
 
 # What is prometheus ?
@@ -432,14 +433,23 @@ I hope I did justice to your time and helped you understand the basics of promet
 **Where to go from here:**
 - It is important to understand PromQL extensively to take advantage of the metrics which one has collected. Remember the goal is not just to collect metrics but to derive answers for application related questions.  [This](https://medium.com/@valyala/promql-tutorial-for-beginners-9ab455142085) is a very good resource to get started with PromQL.
 
-
-
 To Do 
 - [x] Integration with grafana to create dashboards
 - [ ] Add code samples for all metric types.
 - [ ] Explain about the concept of Service Discovery for integrating with kubernetes.
 - [ ] Basic Alerting + Prometheus alerts vs Grafana alerts.
 - [ ] Integrating alerts with tool like pagerduty.
+
+### Run prometheus and grafana in docker
+
+You can run the whole setup of simple ping server, Prometheus and Grafana using docker. Just run the following command.
+ 
+```bash
+docker-compose up
+```
+- http://localhost:9090 - prometheus UI
+- http://localhost:8090 - ping/pong service
+- http://localhost:3000/d/WdZVAykGk/ping-service?orgId=1 - grafana dashboard (admin:admin)
 
 ### References:
 - https://prometheus.io/docs/
