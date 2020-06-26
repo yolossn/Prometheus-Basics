@@ -5,8 +5,8 @@
   <img width="360" height="360" src="https://github.com/yolossn/Prometheus-Basics/blob/master/images/logo.png">
 </p>
 
-
-
+<a href="https://tracking.gitads.io/?repo=Prometheus-Basics" target="_blank"><img src="https://images.gitads.io/Prometheus-Basics" alt="GitAds" title="Support by clicking on this link" style="height: auto !important;width: auto !important;" /></a>
+<br><i>This advert was placed by <a href="https://tracking.gitads.io/?repo=Prometheus-Basics" rel="gitads">GitAds</a> </i>
 
 ## Table of Contents
 1. [What is prometheus ?](https://github.com/yolossn/Prometheus-Basics#what-is-prometheus-)
