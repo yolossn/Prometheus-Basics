@@ -13,8 +13,9 @@
 4. [Show me how it is done](https://github.com/yolossn/Prometheus-Basics#show-me-how-it-is-done)
 5. [Types of metrics](https://github.com/yolossn/Prometheus-Basics#types-of-metrics)
 6. [Create a simple exporter](https://github.com/yolossn/Prometheus-Basics#create-a-simple-exporter)
-7. [Run prometheus and grafana in docker](https://github.com/yolossn/Prometheus-Basics#run-prometheus-and-grafana-in-docker)
-8. [References](https://github.com/yolossn/Prometheus-Basics#References)
+7. [Use Grafana to visualize metrics](https://github.com/yolossn/Prometheus-Basics#use-grafana-to-visualize-metrics)
+8. [Run prometheus and grafana in docker](https://github.com/yolossn/Prometheus-Basics#run-prometheus-and-grafana-in-docker)
+9. [References](https://github.com/yolossn/Prometheus-Basics#References)
 
 <a href="https://www.buymeacoffee.com/yolossn" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
@@ -392,6 +393,8 @@ Note:
 
 - Make sure the authentication mechanism used by your application is supported by prometheus
 - `promhttp.Handler` gzips the response, If you are using a gzip middleware then you must implement some skipper logic to avoid compressing the response twice.
+
+# Use Grafana to visualize metrics
 
 Now that we have our server with `ping_request_count` metric let's create a visualization dashboard. For this, we will use [Grafana](https://grafana.com/). If you wonder why should one use Grafana when we can create graphs using Prometheus. The answer is that the graph that we use to visualize our queries is used for ad-hoc queries and debugging. Prometheus official docs suggest using Grafana or Console Templates for graphs. [Refer](https://prometheus.io/docs/visualization/browser/)
 
