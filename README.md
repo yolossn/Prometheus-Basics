@@ -277,6 +277,13 @@ func main() {
 }
 ```
 
+Compile and run the server
+
+```bash
+go build server.go
+./server.go
+```
+
 We have a simple server which when hit on localhost:8090/ping endpoint sends back pong
 
 <p align="center">
@@ -322,7 +329,7 @@ The `prometheus.MustRegister` function registers the pingCounter to the default 
 To expose the metrics the Go Prometheus client library provides the promhttp package.
 `promhttp.Handler()` provides a `http.Handler` which exposes the metrics registered in the Default Register.
 
-_serverWithMetric.go_
+Here is the complete _serverWithMetric.go_ at this point.
 
 ```go
 package main
@@ -355,6 +362,15 @@ func main() {
    http.ListenAndServe(":8090", nil)
 }
 ```
+
+Re-compile the binary 
+```bash
+go get github.com/prometheus/client_golang/prometheus
+go get github.com/prometheus/client_golang/prometheus/promhttp
+go build server.go
+./server.go
+```
+
 
 Now hit the localhost:8090/ping endpoint a couple of times and sending a request to localhost:8090 will provide the metrics.
 
