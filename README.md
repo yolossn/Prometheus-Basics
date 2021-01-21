@@ -252,7 +252,7 @@ Summary is similar to histogram and calculates quantiles which can be configured
 
 [Source](https://www.youtube.com/watch?v=nJMRmhbY5hY)
 
-# Create a simple exporter
+# Create instrumented application
 
 We will create a request counter metric exporter using Go.
 
